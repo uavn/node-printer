@@ -25,8 +25,7 @@ environment:
     - nodejs_version: "4.4"
     - nodejs_version: "5.8"
     - nodejs_version: "6.9"
-    - nodejs_version: "8.16"
-    - nodejs_version: "11.15"
+    - nodejs_version: "12.10"
     - nodejs_version: "12.10"
       build_electron: "true"
 
