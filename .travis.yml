@@ -25,6 +25,7 @@ before_install:
     fi
   - "export JOBS=4"
   - npm install -g node-gyp node-pre-gyp
+  - node-pre-gyp configure
   - BUILD_ONLY=true npm install --build-from-source
 before_script:
   - git config --global user.name "Ion Lupascu"
