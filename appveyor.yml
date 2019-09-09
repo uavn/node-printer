@@ -3,7 +3,9 @@
 # build version format
 version: "{build}"
 
-platform: x64
+platform: 
+  - x64
+  - x86
 
 image: Visual Studio 2015
 
@@ -20,14 +22,12 @@ init:
 environment:
   matrix:
     # Node.js
-    - nodejs_version: "12"
-      build_electron: "true"
-    - nodejs_version: "12"
+    - nodejs_version: "12.6"
     - nodejs_version: "6.9"
     - nodejs_version: "5.8"
     - nodejs_version: "4.4"
-    - nodejs_version: "0.12"
-    - nodejs_version: "0.10"
+    - nodejs_version: "12"
+      build_electron: "true"
 
 matrix:
   fast_finish: true
@@ -37,7 +37,7 @@ matrix:
 
 # Get the latest stable version of Node 0.STABLE.latest
 install:
-  - ps: Install-Product node $env:nodejs_version x64
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - cmd: SET PATH=c:\python27;%PATH%
   - cmd: SET JOBS=4
   - cmd: SET BUILD_ONLY=true
