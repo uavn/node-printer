@@ -4,16 +4,16 @@
 
 void initNode(v8::Local<v8::Object> exports) {
 // only for node
-    NODE_SET_METHOD(exports, "getPrinters", getPrinters);
-    NODE_SET_METHOD(exports, "getDefaultPrinterName", getDefaultPrinterName);
-    NODE_SET_METHOD(exports, "getPrinter", getPrinter);
-    NODE_SET_METHOD(exports, "getPrinterDriverOptions", getPrinterDriverOptions);
-    NODE_SET_METHOD(exports, "getJob", getJob);
-    NODE_SET_METHOD(exports, "setJob", setJob);
-    NODE_SET_METHOD(exports, "printDirect", PrintDirect);
-    NODE_SET_METHOD(exports, "printFile", PrintFile);
-    NODE_SET_METHOD(exports, "getSupportedPrintFormats", getSupportedPrintFormats);
-    NODE_SET_METHOD(exports, "getSupportedJobCommands", getSupportedJobCommands);
+    Nan::SetMethod(exports, "getPrinters", getPrinters);
+    Nan::SetMethod(exports, "getDefaultPrinterName", getDefaultPrinterName);
+    Nan::SetMethod(exports, "getPrinter", getPrinter);
+    Nan::SetMethod(exports, "getPrinterDriverOptions", getPrinterDriverOptions);
+    Nan::SetMethod(exports, "getJob", getJob);
+    Nan::SetMethod(exports, "setJob", setJob);
+    Nan::SetMethod(exports, "printDirect", PrintDirect);
+    Nan::SetMethod(exports, "printFile", PrintFile);
+    Nan::SetMethod(exports, "getSupportedPrintFormats", getSupportedPrintFormats);
+    Nan::SetMethod(exports, "getSupportedJobCommands", getSupportedJobCommands);
 }
 
 NODE_MODULE(node_printer, initNode);

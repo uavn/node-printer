@@ -13,7 +13,7 @@
 #  define MY_NODE_MODULE_ISOLATE_PRE  isolate, 
 #  define MY_NODE_MODULE_ISOLATE_POST , isolate 
 #  define MY_NODE_MODULE_HANDLESCOPE MY_NODE_MODULE_ISOLATE_DECL v8::HandleScope scope(MY_NODE_MODULE_ISOLATE)
-#  define MY_NODE_MODULE_CALLBACK(name) void name(const v8::FunctionCallbackInfo<v8::Value>& iArgs)
+#  define MY_NODE_MODULE_CALLBACK(name) void name(const Nan::FunctionCallbackInfo<v8::Value>& iArgs)
 #  define V8_VALUE_NEW(type, value)   v8::type::New(MY_NODE_MODULE_ISOLATE_PRE value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New(MY_NODE_MODULE_ISOLATE)
 #  define V8_STRING_NEW_UTF8(value)   v8::String::NewFromUtf8(MY_NODE_MODULE_ISOLATE_PRE value)
