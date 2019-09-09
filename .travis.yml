@@ -1,6 +1,6 @@
 env:
   matrix:
-    - export NODE_VERSION="12.10"
+    - export NODE_VERSION="12.6"
     - export NODE_VERSION="6.9"
     - export NODE_VERSION="5.9"
     - export NODE_VERSION="4.4"
@@ -8,7 +8,6 @@ matrix:
   fast_finish: true
   allow_failures:
     - env: NODE_VERSION="0.10"
-    - env: NODE_VERSION="0.12"
     - env: NODE_VERSION="iojs"
 before_install:
   - git clone https://github.com/creationix/nvm.git ./.nvm
@@ -24,9 +23,7 @@ before_install:
       sudo apt-get install -qq debhelper autotools-dev cups-ppdc libcups2-dev cups imagemagick ghostscript;
     fi
   - "export JOBS=4"
-  - npm install -g node-gyp node-pre-gyp
-  - npm install
-  - node-pre-gyp configure
+  - npm install -g node-gyp
   - BUILD_ONLY=true npm install --build-from-source
 before_script:
   - git config --global user.name "Ion Lupascu"
