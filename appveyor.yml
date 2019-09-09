@@ -3,9 +3,7 @@
 # build version format
 version: "{build}"
 
-platform: 
-  - x64
-  - x86
+platform: x64
 
 image: Visual Studio 2015
 
@@ -22,11 +20,10 @@ init:
 environment:
   matrix:
     # Node.js
-    # - nodejs_version: "12.6"
     - nodejs_version: "6.9"
     - nodejs_version: "5.8"
     - nodejs_version: "4.4"
-    - nodejs_version: "12"
+    - nodejs_version: "12.6"
       build_electron: "true"
 
 matrix:
