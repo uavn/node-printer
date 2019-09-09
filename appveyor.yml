@@ -22,7 +22,7 @@ init:
 environment:
   matrix:
     # Node.js
-    - nodejs_version: "12.6"
+    # - nodejs_version: "12.6"
     - nodejs_version: "6.9"
     - nodejs_version: "5.8"
     - nodejs_version: "4.4"

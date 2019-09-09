@@ -22,7 +22,6 @@
     "grunt-node-gyp": "git://github.com/tojocky/grunt-node-gyp.git",
     "grunt-nw-gyp": "git://github.com/tojocky/grunt-nw-gyp.git",
     "nan": "^2.14.0",
-    "node-pre-gyp": "^0.13.0",
     "nodeunit": "*"
   },
   "engines": {
