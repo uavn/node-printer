@@ -33,6 +33,7 @@ before_script:
   - git config --global user.email ionlupascu@gmail.com
 
 after_script:
+  - npm install node-pre-gyp
   - node-pre-gyp configure
   - node-pre-gyp build package
 
