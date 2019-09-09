@@ -90,11 +90,11 @@
 
 #define REQUIRE_ARGUMENT_STRING(args, i, var)                                        \
     ARG_CHECK_STRING(args, i);                                                       \
-    Nan::Utf8String var(args[i]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
+    Nan::Utf8String var(args[i]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>())); \
 
 #define REQUIRE_ARGUMENT_STRINGW(args, i, var)                                        \
     ARG_CHECK_STRING(args, i);                                                       \
-    v8::String::Value var(args[i]->ToString());
+    v8::Local<v8::String> var(args[i]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>())); \
 
 
 #define OPTIONAL_ARGUMENT_FUNCTION(i, var)                                     \
