@@ -29,7 +29,6 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "preinstall": "npm install node-pre-gyp",
     "install": "node-pre-gyp install --fallback-to-build",
     "test": "nodeunit test"
   },
