@@ -20,7 +20,10 @@
       'sources': [
         # is like "ls -1 src/*.cc", but gyp does not support direct patterns on
         # sources
-        '<!@(["python", "tools/getSourceFiles.py", "src", "cc"])'
+        # '<!@(["python", "tools/getSourceFiles.py", "src", "cc"])'
+        'src/node_printer.cc',
+        'src/node_printer_posix.cc',
+        'src/node_printer_win.cc'
       ],
       'conditions': [
         # common exclusions
@@ -45,10 +48,10 @@
             #'-lcups -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -lz -lpthread -lm -lcrypt -lz'
           ],
           'link_settings': {
-              'libraries': [
-                  '<!(cups-config --libs)'
-              ]
-           }
+            'libraries': [
+                '<!(cups-config --libs)'
+            ]
+          }
         }]
       ]
     }
