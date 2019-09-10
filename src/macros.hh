@@ -44,8 +44,6 @@
 #endif
 
 #if NODE_VERSION_AT_LEAST(4, 0, 0)
-#define MY_MODULE_SET_METHOD(exports, name, method) Nan::SetMethod(exports, name, method)
-#define MY_NODE_MODULE_CALLBACK(name) void name(const Nan::FunctionCallbackInfo<v8::Value>& iArgs)
 #define V8_LOCAL_STRING_FROM_VALUE(value) value->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>())
 #define REQUIRE_ARGUMENT_INTEGER(args, i, var)                             \
     int var;                                                                   \
@@ -56,8 +54,6 @@
         RETURN_EXCEPTION_STR("Argument " #i " must be an integer");                 \
     }
 #else
-#define MY_MODULE_SET_METHOD(exports, name, method) NODE_SET_METHOD(exports, name, method)
-#define MY_NODE_MODULE_CALLBACK(name) void name(const v8::FunctionCallbackInfo<v8::Value>& iArgs)
 #define V8_LOCAL_STRING_FROM_VALUE(value) value->ToString()
 #define REQUIRE_ARGUMENT_INTEGER(args, i, var)                             \
     int var;                                                                   \
@@ -67,6 +63,14 @@
     else {                                                                     \
         RETURN_EXCEPTION_STR("Argument " #i " must be an integer");                 \
     }
+#endif
+
+#if NODE_VERSION_AT_LEAST(4, 0, 0)
+#define MY_MODULE_SET_METHOD(exports, name, method) Nan::SetMethod(exports, name, method)
+#define MY_NODE_MODULE_CALLBACK(name) void name(const Nan::FunctionCallbackInfo<v8::Value>& iArgs)
+#else
+#define MY_MODULE_SET_METHOD(exports, name, method) NODE_SET_METHOD(exports, name, method)
+#define MY_NODE_MODULE_CALLBACK(name) void name(const v8::FunctionCallbackInfo<v8::Value>& iArgs)
 #endif
 
 #define V8_STR_CONC(left, right)                              \
