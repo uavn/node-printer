@@ -21,14 +21,32 @@ environment:
   matrix:
     # Node.js
     - nodejs_version: "0.10.48"
+      msvs_toolset: 12
+      msvs_version: 2013
     - nodejs_version: "0.12.18"
+      msvs_toolset: 12
+      msvs_version: 2013
     - nodejs_version: "4.9.1"
+      msvs_toolset: 12
+      msvs_version: 2013
     - nodejs_version: "5.9.1"
+      msvs_toolset: 14
+      msvs_version: 2015
     - nodejs_version: "6.17.1"
+      msvs_toolset: 14
+      msvs_version: 2015
     - nodejs_version: "8.16.1"
+      msvs_toolset: 14
+      msvs_version: 2015
     - nodejs_version: "10.16.0"
+      msvs_toolset: 14
+      msvs_version: 2015
     - nodejs_version: "11.15.0"
+      msvs_toolset: 14
+      msvs_version: 2015
     - nodejs_version: "12.10.0"
+      msvs_toolset: 14
+      msvs_version: 2015
       build_electron: "true"
 
 matrix:
@@ -43,8 +61,9 @@ install:
   - cmd: SET PATH=c:\python27;%PATH%
   - cmd: SET JOBS=4
   - cmd: SET BUILD_ONLY=true
+  - cmd: CALL "C:\Program Files (x86)\Microsoft Visual Studio $env:msvs_toolset.0\VC\vcvarsall.bat" amd64
   - npm install -g node-gyp node-pre-gyp
-  - npm install --build-from-source --msvs_version=2013
+  - npm install --build-from-source --msvs_version=$env:msvs_version
 
 test_script:
   - node --version
