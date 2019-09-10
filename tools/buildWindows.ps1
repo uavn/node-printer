@@ -1,10 +1,10 @@
 # Build Win32 64bit
-node-pre-gyp configure
-node-pre-gyp build package
+node-pre-gyp configure --target=$env:nodejs_version
+node-pre-gyp build package --target=$env:nodejs_version --target_arch=x64
 
 # Build Win32 32bit
-node-pre-gyp configure
-node-pre-gyp build package --target_arch=ia32
+node-pre-gyp configure --target=$env:nodejs_version
+node-pre-gyp build package --target=$env:nodejs_version --target_arch=ia32
 
 if ($env:build_electron -ne "true") {
   echo "Skipping Electron Build as flag not set"
