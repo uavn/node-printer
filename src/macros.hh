@@ -6,14 +6,17 @@
 
 // NODE_MODULE_VERSION was incremented for v0.11
 
-
 #if NODE_VERSION_AT_LEAST(0, 11, 9)
 #  define MY_NODE_MODULE_ISOLATE_DECL v8::Isolate* isolate = v8::Isolate::GetCurrent();
 #  define MY_NODE_MODULE_ISOLATE      isolate
 #  define MY_NODE_MODULE_HANDLESCOPE MY_NODE_MODULE_ISOLATE_DECL Nan::HandleScope scope
 #  define V8_VALUE_NEW(type, value)   v8::type::New(MY_NODE_MODULE_ISOLATE, value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New(MY_NODE_MODULE_ISOLATE)
-#  define V8_STRING_NEW_UTF8(value)   v8::String::NewFromUtf8(MY_NODE_MODULE_ISOLATE, value)
+#  if NODE_MODULE_VERSION >= 73
+#   define V8_STRING_NEW_UTF8(value)   v8::String::NewFromUtf8(MY_NODE_MODULE_ISOLATE, value).ToLocalChecked()
+#  else
+#    define V8_STRING_NEW_UTF8(value)   v8::String::NewFromUtf8(MY_NODE_MODULE_ISOLATE, value)
+#  endif
 #  define V8_STRING_NEW_2BYTES(value)   v8::String::NewFromTwoByte(MY_NODE_MODULE_ISOLATE, value)
 
 #  define RETURN_EXCEPTION(msg)  isolate->ThrowException(Nan::Error(msg));    \
