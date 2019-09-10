@@ -26,7 +26,7 @@
         "<!(node -e \"require('nan')\")"
       ],
       'cflags_cc+': [
-        "-Wno-cast-function-type"
+        "-Wno-deprecated-declarations"
       ],
       'conditions': [
         # common exclusions
