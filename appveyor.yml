@@ -39,7 +39,7 @@ matrix:
 
 # Get the latest stable version of Node 0.STABLE.latest
 install:
-  - ps: Install-Product node 12 x64
+  - ps: Install-Product node 12.6 x64
   - cmd: SET PATH=c:\python27;%PATH%
   - cmd: SET JOBS=4
   - cmd: SET BUILD_ONLY=true
