@@ -1,19 +1,19 @@
 env:
   matrix:
-    - export NODE_VERSION="0.10"
-    - export NODE_VERSION="0.12"
-    - export NODE_VERSION="4"
-    - export NODE_VERSION="5"
-    - export NODE_VERSION="6"
-    - export NODE_VERSION="8"
-    - export NODE_VERSION="10"
-    - export NODE_VERSION="11"
-    - export NODE_VERSION="12"
+    - export NODE_VERSION="0.10.48"
+    - export NODE_VERSION="0.12.18"
+    - export NODE_VERSION="4.9.1"
+    - export NODE_VERSION="5.9.1"
+    - export NODE_VERSION="6.17.1"
+    - export NODE_VERSION="8.16.1"
+    - export NODE_VERSION="10.16.0"
+    - export NODE_VERSION="11.15.0"
+    - export NODE_VERSION="12.10.0"
 matrix:
   fast_finish: true
   allow_failures:
-    - env: NODE_VERSION="0.10"
-    - env: NODE_VERSION="0.12"
+    - env: NODE_VERSION="0.10.48"
+    - env: NODE_VERSION="0.12.18"
 before_install:
   - git clone https://github.com/creationix/nvm.git ./.nvm
   - source ./.nvm/nvm.sh
