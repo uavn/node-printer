@@ -20,10 +20,7 @@
       'sources': [
         # is like "ls -1 src/*.cc", but gyp does not support direct patterns on
         # sources
-        # '<!@(["python", "tools/getSourceFiles.py", "src", "cc"])'
-        'src/node_printer.cc',
-        'src/node_printer_posix.cc',
-        'src/node_printer_win.cc'
+        '<!@(["python", "tools/getSourceFiles.py", "src", "cc"])'
       ],
       'conditions': [
         # common exclusions
