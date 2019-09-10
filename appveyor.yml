@@ -20,19 +20,25 @@ init:
 environment:
   matrix:
     # Node.js
-    - nodejs_version: "4.4"
-    - nodejs_version: "5.8"
-    - nodejs_version: "6.9"
+    - nodejs_version: "0.10.48"
+    - nodejs_version: "0.12.18"
+    - nodejs_version: "4.9.1"
+    - nodejs_version: "5.9.1"
+    - nodejs_version: "6.17.1"
+    - nodejs_version: "8.16.1"
+    - nodejs_version: "10.16.0"
+    - nodejs_version: "11.15.0"
       build_electron: "true"
 
 matrix:
   fast_finish: true
   allow_failures:
-    - nodejs_version: "0.10"
+    - nodejs_version: "0.10.48"
+    - nodejs_version: "0.12.18"
 
 # Get the latest stable version of Node 0.STABLE.latest
 install:
-  - ps: Install-Product node $env:nodejs_version x64
+  - ps: Install-Product node 11.15.0 x64
   - cmd: SET PATH=c:\python27;%PATH%
   - cmd: SET JOBS=4
   - cmd: SET BUILD_ONLY=true
