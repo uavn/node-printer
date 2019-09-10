@@ -63,7 +63,7 @@ install:
   - cmd: SET BUILD_ONLY=true
   - cmd: CALL "C:\Program Files (x86)\Microsoft Visual Studio %msvs_toolset%.0\VC\vcvarsall.bat" amd64
   - npm install -g node-gyp node-pre-gyp
-  - npm install --build-from-source --msvs_version=$env:msvs_version
+  - npm install --build-from-source --msvs_version=$(msvs_version)
 
 test_script:
   - node --version
