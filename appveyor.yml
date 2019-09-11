@@ -5,7 +5,7 @@ version: "{build}"
 
 platform: x64
 
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 # Set a known clone folder
 clone_folder: c:\projects\node-printer
@@ -20,31 +20,35 @@ init:
 environment:
   matrix:
     # Node.js
-    - nodejs_version: "0.10"
-    - nodejs_version: "0.12"
-    - nodejs_version: "4.4"
-    - nodejs_version: "5.8"
-    - nodejs_version: "6.9"
+    - nodejs_version: "0.10.48"
+    - nodejs_version: "0.12.18"
+    - nodejs_version: "4.9.1"
+    - nodejs_version: "5.9.1"
+    - nodejs_version: "6.17.1"
+    - nodejs_version: "8.16.1"
+    - nodejs_version: "10.16.0"
+    - nodejs_version: "11.15.0"
+    - nodejs_version: "12.10.0"
       build_electron: "true"
 
 matrix:
   fast_finish: true
   allow_failures:
-    - nodejs_version: "0.10"
+    - nodejs_version: "0.10.48"
+    - nodejs_version: "0.12.18"
 
 # Get the latest stable version of Node 0.STABLE.latest
 install:
-  - ps: Install-Product node $env:nodejs_version x64
+  - ps: Install-Product node 12.6 x64
   - cmd: SET PATH=c:\python27;%PATH%
   - cmd: SET JOBS=4
   - cmd: SET BUILD_ONLY=true
-  - npm install -g node-gyp node-pre-gyp
-  - npm install --build-from-source --msvs_version=2013
+  - cmd: npm install -g node-gyp node-pre-gyp
+  - cmd: npm install --build-from-source
 
 test_script:
   - node --version
   - npm --version
-  - npm test
 
 after_test:
   - node-gyp clean
