@@ -1,6 +1,6 @@
 {
   "variables": {
-    "module_name%" "node_printer",
+    "module_name%": "node_printer",
     "module_path%": "lib"
   },
   'targets': [
